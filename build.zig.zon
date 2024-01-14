@@ -1,0 +1,15 @@
+.{
+    .name = "fetch-z",
+    .version = "0.0.0",
+
+    .dependencies = .{
+        .tlsz = .{
+            .url = "https://github.com/kamlesh-nb/tlsz/archive/refs/tags/v0.0.5.tar.gz",
+            .hash = "12208ed5a4ef2cfcda79ed06b98cdf3c5dd42a9cb511fc492be3ef05d66978015286",
+        },
+    },
+
+    .paths = .{
+        "",
+    },
+}
