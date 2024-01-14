@@ -1,9 +1,9 @@
 const std = @import("std");
 const tls = @import("tls");
 const Tls = tls.Tls;
-const ciphers = Tls.CipherSuites;
-const clientHandshake = Tls.ClientHandshake;
-const R = Tls.Record;
+const ciphers = tls.CipherSuites;
+const clientHandshake = tls.ClientHandshake;
+const R = tls.Record;
 
 const Connection = @This();
 
