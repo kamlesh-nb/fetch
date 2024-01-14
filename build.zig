@@ -12,7 +12,7 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
-    _ = b.addModule("fetch-z", .{
+    _ = b.addModule("fetch", .{
         .root_source_file = .{ .path = "src/main.zig" },
         .imports =  &.{
             .{
