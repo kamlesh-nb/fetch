@@ -1,9 +1,9 @@
 const std = @import("std");
-const tlsz = @import("tlsz");
-const tls = tlsz.Tls;
-const ciphers = tlsz.CipherSuites;
-const clientHandshake = tlsz.ClientHandshake;
-const R = tlsz.Record;
+const tls = @import("tls");
+const Tls = tls.Tls;
+const ciphers = Tls.CipherSuites;
+const clientHandshake = Tls.ClientHandshake;
+const R = Tls.Record;
 
 const Connection = @This();
 
@@ -22,7 +22,6 @@ pub const WriteError = error{
 };
 
 pub const ReaderError = std.net.Stream.ReadError || Connection.ReadError || tls.AlertDescription.Error || error{ ServerMalformedResponse, ServerInvalidVersion, AuthenticationFailed };
-
 
 const InRecordState = ciphers.InRecordState(ciphers.CipherSuites.all);
 
@@ -46,11 +45,9 @@ pub fn init(allocator: std.mem.Allocator, stream: std.net.Stream, host: []const 
     return Connection{
         .need_tls = need_tls,
         .stream = stream,
-        .handshake = if(need_tls)  try clientHandshake.init(allocator, stream, host) else undefined,
+        .handshake = if (need_tls) try clientHandshake.init(allocator, stream, host) else undefined,
     };
 }
-
-
 
 fn lenOverhead(self: *const Connection) u16 {
     inline for (ciphers.CipherSuites.all) |cs| {

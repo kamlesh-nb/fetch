@@ -3,9 +3,9 @@
     .version = "0.0.0",
 
     .dependencies = .{
-        .tlsz = .{
-            .url = "https://github.com/kamlesh-nb/tlsz/archive/refs/tags/v0.0.5.tar.gz",
-            .hash = "12208ed5a4ef2cfcda79ed06b98cdf3c5dd42a9cb511fc492be3ef05d66978015286",
+        .tls = .{
+            .url = "https://github.com/kamlesh-nb/tls/archive/refs/tags/v0.0.1.tar.gz",
+            .hash = "12200386ca38d37e25b820cfc94780be2095a6e04818c0ed51c5b6d62021c168197c",
         },
     },
 

@@ -6,7 +6,7 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
 
     const lib = b.addStaticLibrary(.{
-        .name = "fetch-z",
+        .name = "fetch",
         .root_source_file = .{ .path = "src/main.zig" },
         .target = target,
         .optimize = optimize,
@@ -16,30 +16,30 @@ pub fn build(b: *std.Build) void {
         .root_source_file = .{ .path = "src/main.zig" },
         .imports =  &.{
             .{
-                .name = "tlsz",
-                .module = b.dependency("tlsz", .{}).module("tls-z"),
+                .name = "tls",
+                .module = b.dependency("tls", .{}).module("tls"),
             },
         },
     });
 
-    lib.root_module.addImport("tlsz", b.dependency("tlsz", .{
+    lib.root_module.addImport("tls", b.dependency("tls", .{
         .target = target,
         .optimize = optimize,
-    }).module("tls-z"));
+    }).module("tls"));
 
     b.installArtifact(lib);
 
     const exe = b.addExecutable(.{
-        .name = "fetch-z",
+        .name = "fetch",
         .root_source_file = .{ .path = "src/main.zig" },
         .target = target,
         .optimize = optimize,
     });
 
-    exe.root_module.addImport("tlsz", b.dependency("tlsz", .{
+    exe.root_module.addImport("tls", b.dependency("tls", .{
         .target = target,
         .optimize = optimize,
-    }).module("tls-z"));
+    }).module("tls"));
 
     b.installArtifact(exe);
 
