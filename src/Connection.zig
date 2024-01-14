@@ -21,7 +21,7 @@ pub const WriteError = error{
     UnexpectedWriteFailure,
 };
 
-pub const ReaderError = std.net.Stream.ReadError || Connection.ReadError || tls.AlertDescription.Error || error{ ServerMalformedResponse, ServerInvalidVersion, AuthenticationFailed };
+pub const ReaderError = std.net.Stream.ReadError || Connection.ReadError || Tls.AlertDescription.Error || error{ ServerMalformedResponse, ServerInvalidVersion, AuthenticationFailed };
 
 const InRecordState = ciphers.InRecordState(ciphers.CipherSuites.all);
 
