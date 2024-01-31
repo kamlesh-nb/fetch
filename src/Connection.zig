@@ -255,4 +255,5 @@ pub fn close(self: *Connection) !void {
 
 pub fn deinit(self: *Connection) void {
     self.handshake.deinit();
+    self.stream.close();
 }

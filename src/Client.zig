@@ -43,6 +43,11 @@ pub fn write(self: *Client, buffer: []const u8) !usize {
     return try self.connection.write(buffer);
 }
 
+pub fn close(self: *Client) !void {
+    if(self.protocol == .tls) try self.connection.close();
+    return;
+}
+
 pub fn deinit(self: *Client) void {
     self.connection.deinit();
 }
